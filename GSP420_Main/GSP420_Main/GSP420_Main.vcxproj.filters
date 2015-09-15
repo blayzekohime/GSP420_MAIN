@@ -33,9 +33,6 @@
     <ClCompile Include="Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,6 +60,12 @@
     <ClCompile Include="UI.cpp">
       <Filter>Source Files\Other Cores</Filter>
     </ClCompile>
+    <ClCompile Include="AsteroidManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -75,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
@@ -105,6 +105,15 @@
       <Filter>Header Files\Other Cores</Filter>
     </ClInclude>
     <ClInclude Include="Physics.h">
+      <Filter>Header Files\Other Cores</Filter>
+    </ClInclude>
+    <ClInclude Include="AsteroidManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ABC.h">
       <Filter>Header Files\Other Cores</Filter>
     </ClInclude>
   </ItemGroup>
