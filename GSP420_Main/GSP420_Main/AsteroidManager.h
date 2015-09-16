@@ -26,6 +26,7 @@ private:
 
 class AsteroidManager
 {
+	friend class Physics;
 public:
 	void update(const float);
 	void init(const int modelId, const int textureId) {}

@@ -60,6 +60,14 @@ void EnemyManager::update(const float dt)
 			PROJECTILES.removeTarget(&*it);
 			//give player score
 			PLAYER.giveScore(it->getScore());
+			//possibly give projectile
+			int pickupChance = rand() % 100;
+			if (pickupChance < GET_HEALTH_CHANCE)
+				PICKUPS.add(Pickup(it->getPosition(), PU_HEALTH));
+			else if (pickupChance < GET_HEALTH_CHANCE + GET_INVULNERABLE_CHANCE)
+				PICKUPS.add(Pickup(it->getPosition(), PU_INVULNERABLE));
+			else if (pickupChance < GET_HEALTH_CHANCE + GET_INVULNERABLE_CHANCE + GET_MISSILES_CHANCE)
+				PICKUPS.add(Pickup(it->getPosition(), PU_MISSILE));
 			//then delete
 			Enemies.erase(it++);
 		}

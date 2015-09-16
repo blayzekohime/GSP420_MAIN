@@ -1,13 +1,17 @@
 #pragma once
 
 #include <list>
-#include <vector>
 #include "GSP420_ABC.h"
 
 const static int HEALTH_REGAINED = 10;
 const static float INVULNERABLE_TIME = 10.f;
 const static int MISSILES_GIVEN = 5;
 const static int MINE_DAMAGE = 10;
+//chance of getting particular pickup when enemy dies
+//these values are the chance it will occur out of 100
+const static int GET_HEALTH_CHANCE = 10;
+const static int GET_INVULNERABLE_CHANCE = 5;
+const static int GET_MISSILES_CHANCE = 15;
 
 enum PICKUP_TYPE { PU_HEALTH, PU_INVULNERABLE, PU_MISSILE, PU_MINE };
 
@@ -19,6 +23,7 @@ public:
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 	void activate();
+	inline void take() { taken = true; }
 	inline bool isTaken() { return taken; }
 private:
 	PICKUP_TYPE Type;
@@ -31,6 +36,7 @@ private:
 
 class PickupManager
 {
+	friend class Physics;
 public:
 	void add(Pickup);
 	void update(const float);

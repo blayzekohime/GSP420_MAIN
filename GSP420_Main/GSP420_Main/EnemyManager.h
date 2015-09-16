@@ -1,7 +1,6 @@
 #pragma once
 
 #include <list>
-#include <vector>
 
 #include "GSP420_ABC.h"
 
@@ -21,6 +20,7 @@ public:
 	void fireBullet(D3DXVECTOR3 velocity);
 	void fireMissile();
 	void dropMine();
+	inline void takeDamage(int d) { damage += d; }
 	inline int getDamage() { return damage; }
 	inline int getScore() { return score; }
 protected:
@@ -31,6 +31,8 @@ protected:
 
 class EnemyManager
 {
+	friend class AI;
+	friend class Physics;
 public:
 	void add(Enemy);
 	void update(const float);

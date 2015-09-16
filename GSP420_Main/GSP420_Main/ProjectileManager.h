@@ -1,12 +1,12 @@
 #pragma once
 
 #include <list>
-#include <vector>
 #include "GSP420_ABC.h"
 #include "EnemyManager.h"
 
 static const int BULLET_DAMAGE = 1;
 static const int MISSILE_DAMAGE = 2;
+static const int COLLISION_DAMAGE = 1;
 static const int MISSILE_RADIUS = 50;
 
 class Bullet : public GSP420_ABC
@@ -37,6 +37,7 @@ private:
 
 class ProjectileManager
 {
+	friend class Physics;
 public:
 	inline void addBullet(Bullet b) { Projectiles.push_front(b); }
 	inline void addMissile(Missile m) { Projectiles.push_front(m); }
