@@ -31,11 +31,13 @@ void PickupManager::update(const float dt)
 	std::list<Pickup>::iterator it = Pickups.begin();
 	while (it != Pickups.end())
 	{
+		//if marked as collided with the player
 		if (it->isTaken())
 		{
 			it->activate();
 			Pickups.erase(it++);
 		}
+		//if marked as having gone off-screen
 		else if (!it->isEnabled())
 		{
 			Pickups.erase(it++);

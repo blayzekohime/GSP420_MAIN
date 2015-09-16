@@ -31,10 +31,10 @@ void Enemy::fireBullet(D3DXVECTOR3 vel)
 	PROJECTILES.addBullet(Bullet(position, vel, OT_ENEMY_BULLET));
 }
 
-void Enemy::fireMissile()//or auto-target the one existing player?
+void Enemy::fireMissile(D3DXVECTOR3 vel)//or auto-target the one existing player?
 {
 	//create missile with position and target, velocity will be determined by target
-	PROJECTILES.addMissile(Missile(position, OT_ENEMY_MISSILE));
+	PROJECTILES.addMissile(Missile(position, vel, OT_ENEMY_MISSILE));
 }
 
 void Enemy::dropMine()

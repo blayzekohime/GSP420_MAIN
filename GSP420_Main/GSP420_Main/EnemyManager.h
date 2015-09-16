@@ -18,7 +18,7 @@ public:
 	void update(const float) {}
 	void shutdown() {}
 	void fireBullet(D3DXVECTOR3 velocity);
-	void fireMissile();
+	void fireMissile(D3DXVECTOR3 velocity);
 	void dropMine();
 	inline void takeDamage(int d) { damage += d; }
 	inline int getDamage() { return damage; }

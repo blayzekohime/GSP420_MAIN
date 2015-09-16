@@ -23,7 +23,8 @@ protected:
 class Missile : public GSP420_ABC
 {
 public:
-	Missile(const D3DXVECTOR3 pos, const OBJ_TYPE t, Enemy* targ = NULL) : GSP420_ABC(pos, t), target(targ)
+	Missile(const D3DXVECTOR3 pos, const D3DXVECTOR3 vel, const OBJ_TYPE t, Enemy* targ = NULL) : 
+		GSP420_ABC(pos, vel, t), target(targ)
 		{}
 	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
