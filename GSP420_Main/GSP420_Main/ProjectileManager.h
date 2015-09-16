@@ -37,6 +37,7 @@ private:
 
 class ProjectileManager
 {
+	friend class Graphics;
 	friend class Physics;
 public:
 	inline void addBullet(Bullet b) { Projectiles.push_front(b); }

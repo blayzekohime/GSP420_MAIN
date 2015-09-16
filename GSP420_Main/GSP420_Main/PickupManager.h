@@ -36,6 +36,7 @@ private:
 
 class PickupManager
 {
+	friend class Graphics;
 	friend class Physics;
 public:
 	void add(Pickup);

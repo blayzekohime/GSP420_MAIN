@@ -32,6 +32,7 @@ protected:
 class EnemyManager
 {
 	friend class AI;
+	friend class Graphics;
 	friend class Physics;
 public:
 	void add(Enemy);

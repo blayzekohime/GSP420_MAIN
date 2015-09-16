@@ -26,6 +26,7 @@ private:
 
 class AsteroidManager
 {
+	friend class Graphics;
 	friend class Physics;
 public:
 	void update(const float);
