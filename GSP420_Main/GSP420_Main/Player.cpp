@@ -1,7 +1,6 @@
 #include "Player.h"
 
-#include "Graphics.h"
-
+#include "Game.h"
 
 void Player::fireBullet()
 {
@@ -35,6 +34,8 @@ void Player::hurt(int h)
 		{
 			endGame();
 		}
+		//set invulnerability when hit again
+		invulnerable = HURT_INVULNERABILITY;
 	}
 }
 
@@ -51,7 +52,9 @@ void Player::endGame()
 
 void Player::update(const float dt)
 {
-	//update movement and check for inputs
+	if (invulnerable > 0.f)
+		invulnerable -= dt;
+	
 }
 
 

@@ -1,27 +1,22 @@
 #include "PickupManager.h"
 
-#include "Player.h"
+#include "Game.h"
 
-#include "Graphics.h"
-
-
-void Pickup::update(const float dt)
-{
-	//todo: update position and check for collision with player
-}
-
-void Pickup::Activate()
+void Pickup::activate()
 {
 	switch (Type)
 	{
 	case PU_HEALTH:
-		//add value to player's health
+		PLAYER.heal(HEALTH_REGAINED);
 		break;
 	case PU_INVULNERABLE:
-		//add value seconds of invulnerable status to player
+		PLAYER.makeInvulnerable(INVULNERABLE_TIME);
 		break;
 	case PU_MISSILE:
-		//give value missiles to player
+		PLAYER.giveMissileAmmo(MISSILES_GIVEN);
+		break;
+	case PU_MINE:
+		PLAYER.hurt(MINE_DAMAGE);
 		break;
 	}
 }
@@ -31,22 +26,22 @@ void PickupManager::add(Pickup p)
 	Pickups.push_front(p);
 }
 
-void PickupManager::remove(std::list<Pickup>::reverse_iterator which)
-{
-	Pickups.erase(--which.base());
-}
-
 void PickupManager::update(const float dt)
 {
-	for (std::list<Pickup>::reverse_iterator it = Pickups.rbegin(), rend = Pickups.rend(); it != rend; ++it)
+	std::list<Pickup>::iterator it = Pickups.begin();
+	while (it != Pickups.end())
 	{
-		it->update(dt);
+		if (it->isTaken())
+		{
+			it->activate();
+			Pickups.erase(it++);
+		}
+		else if (!it->isEnabled())
+		{
+			Pickups.erase(it++);
+		}
 	}
 }
 
-void PickupManager::clear()
-{
-	Pickups.clear();
-	std::vector<int>().swap(Flags);
-}
+
 

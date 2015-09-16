@@ -1,13 +1,17 @@
 #pragma once
 
 #include <Windows.h>
-#include "ABC.h"
+
+//d3d includes and libraries
+#include <d3d9.h>
+#include <d3dx9.h>
+#pragma comment(lib, "d3d9.lib")
 
 class Graphics
 {
 public:
-	Graphics();
-	~Graphics();
+	Graphics() {}
+	~Graphics() {}
 	void init() {}
 	void update(const float) {}
 	void render() {}

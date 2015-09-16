@@ -2,50 +2,47 @@
 
 #include <list>
 #include <vector>
-#include "ABC.h"
+#include "GSP420_ABC.h"
 #include "EnemyManager.h"
-#include "Player.h"
 
+static const int BULLET_DAMAGE = 1;
+static const int MISSILE_DAMAGE = 2;
+static const int MISSILE_RADIUS = 50;
 
-
-class Projectile : public ABC
+class Bullet : public GSP420_ABC
 {
 public:
-	Projectile() : ABC() {}
-	void update(const float);
-	bool init(const int modelId, const int textureId) { return true; }
-	void shutdown() {}
-	bool IsPlayers() { return Players; }
-protected:
-	bool Players;
-};
-
-class Missile : public Projectile
-{
-public:
+	Bullet(const D3DXVECTOR3 pos, const D3DXVECTOR3 vel, const OBJ_TYPE t) : GSP420_ABC(pos, vel, t) {}
 	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
-	Missile() : Projectile() {}
-	inline Player getPlayerTarget() { return PlayerTarget; }
-	inline Enemy getEnemyTarget() { return EnemyTarget; }
+	inline bool isPlayers() { return eType == OT_PLAYER_BULLET; }
+protected:
+};
+
+class Missile : public GSP420_ABC
+{
+public:
+	Missile(const D3DXVECTOR3 pos, const OBJ_TYPE t, Enemy* targ = NULL) : GSP420_ABC(pos, t), target(targ)
+		{}
+	void update(const float) {}
+	bool init(const int modelId, const int textureId) { return true; }
+	void shutdown() {}
+	inline void setEnemyTarget(Enemy*e){ target = e; }
+	inline Enemy* getEnemyTarget() { return target; }//returns NULL if it needs re-targeted or if player is target
+	inline bool isPlayers() { return eType == OT_PLAYER_MISSILE; }
 private:
-	Player PlayerTarget;
-	Enemy EnemyTarget;
+	Enemy* target;//applies only to player's missiles, will be null if it is player's or if it needs re-targeted
 };
 
 class ProjectileManager
 {
 public:
-	void add(Projectile);
-	void remove(std::list<Projectile>::reverse_iterator, bool = false);
+	inline void addBullet(Bullet b) { Projectiles.push_front(b); }
+	inline void addMissile(Missile m) { Projectiles.push_front(m); }
 	void update(const float);
-	inline void ClearEnemyProjectiles() { EnemyProjectiles.clear(); }
-	inline void ClearPlayerProjectiles() { PlayerProjectiles.clear(); }
-	inline void ClearFlags() { std::vector<int>().swap(Flags); }
-	void clear();
+	inline void clear() { Projectiles.clear(); }
+	void removeTarget(Enemy*);//if any missiles are targeting that enemy, set their targets to NULL instead
 private:
-	std::list<Projectile> EnemyProjectiles;
-	std::list<Projectile> PlayerProjectiles;
-	std::vector<int> Flags;
+	std::list<GSP420_ABC> Projectiles;
 };

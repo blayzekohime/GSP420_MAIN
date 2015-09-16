@@ -1,14 +1,6 @@
 #include "GameState.h"
 
-#include "AI.h"
-#include "AsteroidManager.h"
-#include "Audio.h"
-#include "EnemyManager.h"
 #include "Game.h"
-#include "Graphics.h"
-#include "Physics.h"
-#include "UI.h"
-
 
 void InitState::init()
 {

@@ -1,23 +1,23 @@
 #pragma once
 
 #include <list>
-#include "ABC.h"
+#include "GSP420_ABC.h"
 
-class LargeAsteroid : public ABC
+class LargeAsteroid : public GSP420_ABC
 {
 public:
-	LargeAsteroid() : ABC() {}
-	void update(const float);
+	LargeAsteroid(const D3DXVECTOR3 pos) : GSP420_ABC(pos, OT_LARGE_ASTEROID) {}
+	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 private:
 };
 
-class SmallAsteroid : public ABC
+class SmallAsteroid : public GSP420_ABC
 {
 public:
-	SmallAsteroid() : ABC() {}
-	void update(const float);
+	SmallAsteroid(const D3DXVECTOR3 pos) : GSP420_ABC(pos, OT_SMALL_ASTEROID) {}
+	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 private:
@@ -29,11 +29,8 @@ class AsteroidManager
 public:
 	void update(const float);
 	void init(const int modelId, const int textureId) {}
+	inline void add(LargeAsteroid a) { LargeAsteroids.push_front(a); }
 	void shutdown() {}
-	void add(LargeAsteroid);
-	void Break(std::list<LargeAsteroid>::reverse_iterator);
-	void add(SmallAsteroid);
-	void remove(std::list<SmallAsteroid>::reverse_iterator);
 	void clear();
 private:
 	std::list<LargeAsteroid> LargeAsteroids;

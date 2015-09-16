@@ -3,8 +3,8 @@
 class Physics
 {
 public:
-	Physics();
-	~Physics();
+	Physics() {}
+	~Physics() {}
 	void init() {}
 	void update(const float) {}
 	void shutdown() {}

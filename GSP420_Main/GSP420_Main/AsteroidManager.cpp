@@ -1,50 +1,37 @@
 #include "AsteroidManager.h"
 
-#include <iostream>
-
-#include "Graphics.h"
-
+#include "Game.h"
 
 void AsteroidManager::update(const float dt)
 {
-	for (std::list<SmallAsteroid>::reverse_iterator it = SmallAsteroids.rbegin(), rend = SmallAsteroids.rend();
-	it != rend; ++it)
+	std::list<LargeAsteroid>::iterator it1 = LargeAsteroids.begin();
+	while (it1 != LargeAsteroids.end())
 	{
-		it->update(dt);
+		if (!it1->isEnabled())
+		{
+			//make 3-5 new small asteroids to replace the large one
+			int new_smalls = 3 + rand() % 3;
+			for (int i = 0; i < new_smalls; ++i)
+			{
+				SmallAsteroids.push_front(SmallAsteroid(it1->getPosition()));
+			}
+			//remove the large one
+			LargeAsteroids.erase(it1++);
+			//score
+			PLAYER.giveScore(ASTEROID_LARGE_SCORE);
+		}
 	}
-	for (std::list<LargeAsteroid>::reverse_iterator it = LargeAsteroids.rbegin(), rend = LargeAsteroids.rend();
-	it != rend; ++it)
+	std::list<SmallAsteroid>::iterator it2 = SmallAsteroids.begin();
+	while (it2 != SmallAsteroids.end())
 	{
-		it->update(dt);
+		if (!it2->isEnabled())
+		{
+			//remove
+			SmallAsteroids.erase(it2++);
+			//score
+			PLAYER.giveScore(ASTEROID_SMALL_SCORE);
+		}
 	}
-	//SmallAsteroids.remove_if(Pred());
-}
-
-void AsteroidManager::add(LargeAsteroid a)
-{
-	LargeAsteroids.push_front(a);
-}
-
-void AsteroidManager::Break(std::list<LargeAsteroid>::reverse_iterator which)
-{
-	//erase the reverse iterator index from the list
-	LargeAsteroids.erase(--which.base());
-	//replace with 3-5 random small asteroids
-	int num_asteroids = 3 + rand() % 3;
-	for (int i = 0; i < num_asteroids; ++i)
-	{
-		//todo: get new asteroid from physics
-	}
-}
-
-void AsteroidManager::add(SmallAsteroid a)
-{
-	SmallAsteroids.push_front(a);
-}
-
-void AsteroidManager::remove(std::list<SmallAsteroid>::reverse_iterator which)
-{
-	SmallAsteroids.erase(--which.base());
 }
 
 void AsteroidManager::clear()
@@ -52,15 +39,4 @@ void AsteroidManager::clear()
 	SmallAsteroids.clear();
 	LargeAsteroids.clear();
 }
-
-void LargeAsteroid::update(const float dt)
-{
-	//todo: update asteroid position and collisions from AI
-}
-
-void SmallAsteroid::update(const float dt)
-{
-	//todo: update asteroid position and collisions from AI
-}
-
 

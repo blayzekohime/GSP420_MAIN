@@ -16,9 +16,6 @@
     <Filter Include="Header Files\Other Cores">
       <UniqueIdentifier>{51dee96b-4c70-451a-bbdc-d96ce01e08bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Other Cores">
-      <UniqueIdentifier>{fd8506b9-6b5d-4495-a887-790a4c207ff9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
@@ -44,21 +41,6 @@
     </ClCompile>
     <ClCompile Include="PickupManager.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AI.cpp">
-      <Filter>Source Files\Other Cores</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio.cpp">
-      <Filter>Source Files\Other Cores</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source Files\Other Cores</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Source Files\Other Cores</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>Source Files\Other Cores</Filter>
     </ClCompile>
     <ClCompile Include="AsteroidManager.cpp">
       <Filter>Source Files</Filter>
@@ -113,7 +95,7 @@
     <ClInclude Include="DirectInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ABC.h">
+    <ClInclude Include="GSP420_ABC.h">
       <Filter>Header Files\Other Cores</Filter>
     </ClInclude>
   </ItemGroup>

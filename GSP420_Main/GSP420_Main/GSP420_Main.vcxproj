@@ -146,21 +146,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AI.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AsteroidManager.cpp" />
-    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Logger.cpp" />
-    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PickupManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />
-    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI.h" />
@@ -177,7 +172,7 @@
     <ClInclude Include="PickupManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ProjectileManager.h" />
-    <ClInclude Include="ABC.h" />
+    <ClInclude Include="GSP420_ABC.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

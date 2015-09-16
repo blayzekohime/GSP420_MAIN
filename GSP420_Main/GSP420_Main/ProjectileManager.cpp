@@ -1,50 +1,26 @@
 #include "ProjectileManager.h"
 
-#include "Graphics.h"
-
-
-
-void Projectile::update(const float dt)
-{
-	//todo::query AI/Physics to find Projectile movement and if it should be destroyed
-	if (Players)
-	{
-		//check for collision with enemies and asteroids
-	}
-	else
-	{
-		//check for collision with player
-	}
-}
-
-void ProjectileManager::add(Projectile p)
-{
-	p.IsPlayers() ? PlayerProjectiles.push_front(p) : EnemyProjectiles.push_front(p);
-}
-
-void ProjectileManager::remove(std::list<Projectile>::reverse_iterator which, bool players)
-{
-	players ? PlayerProjectiles.erase(--which.base()) : EnemyProjectiles.erase(--which.base());
-}
+#include "Game.h"
 
 void ProjectileManager::update(const float dt)
 {
-	for (std::list<Projectile>::reverse_iterator it = PlayerProjectiles.rbegin(),
-		rend = PlayerProjectiles.rend(); it != rend; ++it)
+	std::list<GSP420_ABC>::iterator it = Projectiles.begin();
+	while (it != Projectiles.end())
 	{
-		it->update(dt);
-	}
-	for (std::list<Projectile>::reverse_iterator it = EnemyProjectiles.rbegin(),
-		rend = EnemyProjectiles.rend(); it != rend; ++it)
-	{
-		it->update(dt);
+		if (!it->isEnabled())
+			Projectiles.erase(it++);
 	}
 }
 
-void ProjectileManager::clear()
+void ProjectileManager::removeTarget(Enemy* targ)
 {
-	EnemyProjectiles.clear();
-	PlayerProjectiles.clear();
-	std::vector<int>().swap(Flags);
+	for (std::list<GSP420_ABC>::iterator it = Projectiles.begin(), end = Projectiles.end();
+		it != end; ++it)
+	{
+		//if it is a player missile and has a matching target, set the target to NULL instead
+		if (it->getObjectType() == OT_PLAYER_MISSILE && ((Missile*)&it)->getEnemyTarget() == targ)
+		{
+			((Missile*)&it)->setEnemyTarget(NULL);
+		}
+	}
 }
-

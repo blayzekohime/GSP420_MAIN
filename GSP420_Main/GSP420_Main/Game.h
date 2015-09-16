@@ -2,6 +2,8 @@
 #include <Windows.h>
 //include parent class
 #include "App.h"
+
+#include <list>
 //include state information
 #include "GameState.h"
 //include other cores
@@ -9,8 +11,18 @@
 #include "Physics.h"
 #include "UI.h"
 
-#define GAMECLASS Game::Instance()
+#include "AsteroidManager.h"
+#include "EnemyManager.h"
+#include "PickupManager.h"
+#include "Player.h"
+#include "ProjectileManager.h"
 
+#define GAMECLASS Game::Instance()
+#define ASTEROIDS Game::Instance()->asteroids
+#define ENEMIES Game::Instance()->enemies
+#define PICKUPS Game::Instance()->pickups
+#define PROJECTILES Game::Instance()->projectiles
+#define PLAYER Game::Instance()->player
 
 //this inherits from the base class App and adds things that are specific to this game or demo
 class Game : public App
@@ -23,6 +35,13 @@ class Game : public App
 public:
 	static Game* Instance();
 	inline bool GetPaused() { return paused; }
+
+	//managers
+	AsteroidManager asteroids;
+	EnemyManager enemies;
+	PickupManager pickups;
+	ProjectileManager projectiles;
+	Player player;
 protected:
 	//the one instance of the object
 	static Game* Singleton;

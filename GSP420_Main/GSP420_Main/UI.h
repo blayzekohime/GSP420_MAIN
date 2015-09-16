@@ -2,8 +2,8 @@
 class UI
 {
 public:
-	UI();
-	~UI();
+	UI() {}
+	~UI() {}
 	void init() {}
 	void update(const float) {}
 	void render() {}

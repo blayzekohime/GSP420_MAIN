@@ -7,8 +7,6 @@
 //exclude rarely used things from windows headers
 #define WIN32_LEAN_AND_MEAN	
 
-
-
 class App
 {
 public:
