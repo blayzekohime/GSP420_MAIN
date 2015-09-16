@@ -24,13 +24,6 @@ public:
 	inline int getDamage() { return damage; }
 	inline int getScore() { return score; }
 protected:
-	//the time until the next attack of a certain kind (a random value between min and max)
-	//if the value is set to -1.f, they will not use that type of attack
-	float minBulletTime, maxBulletTime;
-	float minMissileTime, maxMissileTime;
-	float minMineTime, maxMineTime;
-	//initial velocity of next attack, set by UI
-	D3DXVECTOR3 nextVelocity;
 	//score player gets for the enemy
 	int score;
 	int damage;//damage taken so far. If this exceeds their health, they are destroyed
