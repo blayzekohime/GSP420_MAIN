@@ -38,7 +38,7 @@ bool App::IsDeviceLost()
 /*		HRESULT hr = GameGraphics.GetDevice()->TestCooperativeLevel();
 
 	// If the device is lost and cannot be reset yet then
-	// sleep for a bit and we'll try again on the next 
+	// sleep for a bit and we'll try again on the next
 	// message loop cycle.
 	if (hr == D3DERR_DEVICELOST)
 	{

@@ -1,11 +1,12 @@
 #include "GameState.h"
 
+
 #include "Game.h"
 
 void InitState::init()
 {
 	LOGGER->open();
-	INPUT->init(GAMECLASS->GameGraphics, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND);
+	INPUT->init(DISCL_NONEXCLUSIVE | DISCL_FOREGROUND, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND);
 	//init graphics, audio, ui
 }
 

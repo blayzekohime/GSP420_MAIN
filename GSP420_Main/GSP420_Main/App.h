@@ -1,10 +1,10 @@
 #pragma once
 
 #include "DirectInput.h"
-#include "Graphics.h"
 #include "Logger.h"
 
-//exclude rarely used things from windows headers
+
+	//exclude rarely used things from windows headers
 #define WIN32_LEAN_AND_MEAN	
 
 class App
@@ -13,6 +13,7 @@ public:
 	void Run();
 protected:
 	App() {}
+	virtual ~App() {}
 	//framework methods for Game class to use
 	virtual void init() {}//used upon game startup
 	virtual void onLostDevice() {}//used when screen changes size or other event causes device to be lost
@@ -22,8 +23,6 @@ protected:
 	virtual void shutdown() {}//used upon game exit
 								//other methods
 	bool IsDeviceLost();//check to see if the device was lost
-						//cores
-	Graphics GameGraphics;
 	//set to true when it's time to quit
 	bool QuitNow;
 private:

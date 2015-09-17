@@ -45,5 +45,3 @@ void PickupManager::update(const float dt)
 	}
 }
 
-
-

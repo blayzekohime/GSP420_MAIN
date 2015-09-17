@@ -9,10 +9,6 @@
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
 
-class Graphics;
-
-
-
 //make it easier for others to refer to the input. They can use INPUT-> instead of
 //DirectInput::Instance()->
 #define INPUT DirectInput::Instance()
@@ -21,7 +17,7 @@ class DirectInput
 {
 public:
 	static DirectInput* Instance();
-	void init(Graphics& graphics, DWORD keyboardCoopFlags, DWORD  mouseCoopFlags);
+	void init(DWORD keyboardCoopFlags, DWORD  mouseCoopFlags);
 	void shutdown();
 
 	void Poll();//poll for any keys or mouse activated

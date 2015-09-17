@@ -2,7 +2,7 @@
 
 #include "Game.h"
 
-Enemy::Enemy(D3DXVECTOR3 pos, OBJ_TYPE t) : GSP420_ABC(pos, t), damage(0)
+Enemy::Enemy(D3DXVECTOR3 pos, ObjType t) : ABC(pos, t), damage(0)
 {
 	switch (t)
 	{

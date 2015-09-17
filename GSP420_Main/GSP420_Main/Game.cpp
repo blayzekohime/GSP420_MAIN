@@ -9,6 +9,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 {
 	srand((unsigned)time(NULL));
 	Game::Instance()->Run();
+	Game::Instance()->Delete();
 	return 1;
 }
 
@@ -23,6 +24,15 @@ Game* Game::Instance()
 	if (Singleton == 0)
 		Singleton = new Game;
 	return Singleton;
+}
+
+void Game::Delete()
+{
+	if (Singleton)
+	{
+		delete Singleton;
+		Singleton = NULL;
+	}
 }
 
 void Game::init()

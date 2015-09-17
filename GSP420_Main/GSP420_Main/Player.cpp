@@ -54,7 +54,7 @@ void Player::update(const float dt)
 {
 	if (invulnerable > 0.f)
 		invulnerable -= dt;
-	
+
 }
 
 

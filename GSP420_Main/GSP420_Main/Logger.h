@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include <fstream>
+using std::ofstream;
 
 
 //define shorter way or referring to the instance so others can use LOGGER->Write instead of

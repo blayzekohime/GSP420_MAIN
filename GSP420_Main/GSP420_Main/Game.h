@@ -1,21 +1,26 @@
 #pragma once
+
+
 #include <Windows.h>
 //include parent class
 #include "App.h"
 
-#include <list>
+
 //include state information
 #include "GameState.h"
-//include other cores
-#include "AI.h"
-#include "Physics.h"
-#include "UI.h"
+
 
 #include "AsteroidManager.h"
 #include "EnemyManager.h"
 #include "PickupManager.h"
 #include "Player.h"
 #include "ProjectileManager.h"
+
+#include <list>
+//include other cores
+#include "AI.h"
+#include "Physics.h"
+#include "UI.h"
 
 #define GAMECLASS Game::Instance()
 #define ASTEROIDS Game::Instance()->asteroids
@@ -35,7 +40,7 @@ class Game : public App
 public:
 	static Game* Instance();
 	inline bool GetPaused() { return paused; }
-
+	void Delete();
 	//managers
 	AsteroidManager asteroids;
 	EnemyManager enemies;

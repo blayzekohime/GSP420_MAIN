@@ -1,6 +1,7 @@
 #include "DirectInput.h"
 
-#include "Graphics.h"//for AppInst and MainWnd
+#include "Graphics/D3DCore.h"//for AppInst and MainWnd
+using namespace GFXCore;
 #include "Logger.h"
 
 DirectInput* DirectInput::Singleton = NULL;
@@ -12,13 +13,13 @@ DirectInput* DirectInput::Instance()
 	return Singleton;
 }
 
-void DirectInput::init(Graphics& graphics, DWORD keyboardCoopFlags, DWORD  mouseCoopFlags)
+void DirectInput::init(DWORD keyboardCoopFlags, DWORD  mouseCoopFlags)
 {
 	//reset mouse and keyboard states
 	ZeroMemory(KeyboardState, sizeof(KeyboardState));
 	ZeroMemory(&MouseState, sizeof(MouseState));
 	//create direct3d object
-	if (FAILED(DirectInput8Create(graphics.GetAppInst(), DIRECTINPUT_VERSION,
+	if (FAILED(DirectInput8Create(D3DCore::get()->getAppInstance(), DIRECTINPUT_VERSION,
 		IID_IDirectInput8, (void**)&DInput, 0)))
 	{
 		LOGGER->Write(L"Input:Input: Could not create Direct Input 8 Device", true);
@@ -32,7 +33,7 @@ void DirectInput::init(Graphics& graphics, DWORD keyboardCoopFlags, DWORD  mouse
 	{
 		LOGGER->Write(L"Input: Input: Could not set Keyboard Data Format", true);
 	}
-	if (FAILED(Keyboard->SetCooperativeLevel(graphics.GetMainWnd(), keyboardCoopFlags)))
+	if (FAILED(Keyboard->SetCooperativeLevel(D3DCore::get()->getHWND(), keyboardCoopFlags)))
 	{
 		LOGGER->Write(L"Input: Input: Could not set Keyboard Cooperative Level", true);
 	}
@@ -49,7 +50,7 @@ void DirectInput::init(Graphics& graphics, DWORD keyboardCoopFlags, DWORD  mouse
 	{
 		LOGGER->Write(L"Input: Input: Could not Set Mouse Date Format", true);
 	}
-	if (FAILED(Mouse->SetCooperativeLevel(graphics.GetMainWnd(), mouseCoopFlags)))
+	if (FAILED(Mouse->SetCooperativeLevel(D3DCore::get()->getHWND(), mouseCoopFlags)))
 	{
 		LOGGER->Write(L"Input: Input: Could not Set Mouse Cooperative Level", true);
 	}

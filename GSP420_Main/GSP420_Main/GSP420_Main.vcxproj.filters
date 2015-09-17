@@ -74,9 +74,6 @@
     <ClInclude Include="PickupManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Header Files\Other Cores</Filter>
-    </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>Header Files\Other Cores</Filter>
     </ClInclude>
@@ -95,7 +92,13 @@
     <ClInclude Include="DirectInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GSP420_ABC.h">
+    <ClInclude Include="Graphics\D3DCore.h">
+      <Filter>Header Files\Other Cores</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\D3DUtils.h">
+      <Filter>Header Files\Other Cores</Filter>
+    </ClInclude>
+    <ClInclude Include="ABC.h">
       <Filter>Header Files\Other Cores</Filter>
     </ClInclude>
   </ItemGroup>

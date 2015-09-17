@@ -1,7 +1,8 @@
 #pragma once
 
 #include <list>
-#include "GSP420_ABC.h"
+#include "ABC.h"
+using namespace GSP420;
 
 const static int HEALTH_REGAINED = 10;
 const static float INVULNERABLE_TIME = 10.f;
@@ -15,10 +16,10 @@ const static int GET_MISSILES_CHANCE = 15;
 
 enum PICKUP_TYPE { PU_HEALTH, PU_INVULNERABLE, PU_MISSILE, PU_MINE };
 
-class Pickup : public GSP420_ABC
+class Pickup : public GSP420::ABC
 {
 public:
-	Pickup(D3DXVECTOR3 pos, PICKUP_TYPE t) : GSP420_ABC(pos, OT_PICKUP), taken(false) {}
+	Pickup(D3DXVECTOR3 pos, PICKUP_TYPE t) : ABC(pos, OT_PICKUP), taken(false) {}
 	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
@@ -36,7 +37,7 @@ private:
 
 class PickupManager
 {
-	friend class Graphics;
+	friend class D3DCore;
 	friend class Physics;
 public:
 	void add(Pickup);
@@ -45,3 +46,4 @@ public:
 private:
 	std::list<Pickup> Pickups;
 };
+

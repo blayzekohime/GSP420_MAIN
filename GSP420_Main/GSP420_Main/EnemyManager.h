@@ -1,19 +1,21 @@
 #pragma once
 
+
+
+#include "ABC.h"
+using namespace GSP420;
+
 #include <list>
-
-#include "GSP420_ABC.h"
-
 //keep some data all together here so it is easier to change later
 const static int ENEMY_1_HEALTH = 1;
 const static int ENEMY_2_HEALTH = 2;
 const static int ENEMY_3_HEALTH = 3;
 const static int ENEMY_BOSS_HEALTH = 25;
 
-class Enemy : public GSP420_ABC
+class Enemy : public GSP420::ABC
 {
 public:
-	Enemy(D3DXVECTOR3 pos, OBJ_TYPE t);
+	Enemy(D3DXVECTOR3 pos, ObjType t);
 	bool init(const int modelId, const int textureId) { return true; }
 	void update(const float) {}
 	void shutdown() {}
@@ -32,7 +34,7 @@ protected:
 class EnemyManager
 {
 	friend class AI;
-	friend class Graphics;
+	friend class D3DCore;
 	friend class Physics;
 public:
 	void add(Enemy);

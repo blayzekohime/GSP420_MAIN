@@ -1,6 +1,8 @@
 #pragma once
 
-#include "GSP420_ABC.h"
+#include "ABC.h"
+
+
 //keeping the score amounts in one place to make them easier to alter
 const static int ENEMY_1_SCORE = 15;
 const static int ENEMY_2_SCORE = 25;
@@ -11,10 +13,10 @@ const static int ASTEROID_LARGE_SCORE = 20;
 
 const static float HURT_INVULNERABILITY = 1.f;//how long player is invulnerable after being harmed
 
-class Player : public GSP420_ABC
+class Player : public GSP420::ABC
 {
 public:
-	Player() : GSP420_ABC(), missileAmmo(0), maxHealth(25), invulnerable(0.f) {}
+	Player() : ABC(), missileAmmo(0), maxHealth(25), invulnerable(0.f) {}
 	void fireBullet();
 	void fireMissile();
 	void heal(int);

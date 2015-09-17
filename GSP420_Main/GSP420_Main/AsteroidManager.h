@@ -1,32 +1,34 @@
 #pragma once
 
-#include <list>
-#include "GSP420_ABC.h"
 
-class LargeAsteroid : public GSP420_ABC
+#include "ABC.h"
+using namespace GSP420;
+#include <list>
+
+class LargeAsteroid : public GSP420::ABC
 {
 public:
-	LargeAsteroid(const D3DXVECTOR3 pos) : GSP420_ABC(pos, OT_LARGE_ASTEROID) {}
+	LargeAsteroid(const D3DXVECTOR3 pos) : ABC(pos, OT_LARGE_ASTEROID) {}
 	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 private:
 };
 
-class SmallAsteroid : public GSP420_ABC
+class SmallAsteroid : public GSP420::ABC
 {
 public:
-	SmallAsteroid(const D3DXVECTOR3 pos) : GSP420_ABC(pos, OT_SMALL_ASTEROID) {}
+	SmallAsteroid(const D3DXVECTOR3 pos) : ABC(pos, OT_SMALL_ASTEROID) {}
 	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 private:
-	
+
 };
 
 class AsteroidManager
 {
-	friend class Graphics;
+	friend class D3DCore;
 	friend class Physics;
 public:
 	void update(const float);
