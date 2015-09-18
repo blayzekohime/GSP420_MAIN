@@ -42,12 +42,14 @@ class ProjectileManager
 	friend class D3DCore;
 	friend class Physics;
 public:
-	inline void addBullet(Bullet b) { Projectiles.push_front(b); }
-	inline void addMissile(Missile m) { Projectiles.push_front(m); }
+	inline void addBullet(Bullet b) { Bullets.push_front(b); }
+	inline void addMissile(Missile m) { Missiles.push_front(m); }
 	void update(const float);
-	inline void clear() { Projectiles.clear(); }
+	inline void clear() { Bullets.clear(); Missiles.clear(); }
 	void removeTarget(Enemy*);//if any missiles are targeting that enemy, set their targets to NULL instead
 private:
-	inline std::list<GSP420::ABC>& getProjectiles() { return Projectiles; }
-	std::list<GSP420::ABC> Projectiles;
+	inline std::list<Bullet>& getBullets() { return Bullets; }
+	std::list<Bullet> Bullets;
+	inline std::list<Missile>& getMissiles() { return Missiles; }
+	std::list<Missile> Missiles;
 };

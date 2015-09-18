@@ -35,18 +35,17 @@ void PickupManager::update(const float dt)
 		if (it->isTaken())
 		{
 			it->activate();
-			Pickups.erase(it++);
+			it = Pickups.erase(it);
 		}
 		//if marked as having gone off-screen
 		else if (!it->isEnabled())
 		{
-			Pickups.erase(it++);
+			it = Pickups.erase(it);
 		}
 		else
 		{
-			it++;
+			++it;
 		}
 	}
-
 }
 

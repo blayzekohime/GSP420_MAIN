@@ -46,17 +46,16 @@ void EnemyManager::add(Enemy e)
 {
 	Enemies.push_front(e);
 }
-#include <iostream>
+
 void EnemyManager::update(const float dt)
 {
 	std::list<Enemy>::iterator it = Enemies.begin();
 	while (it != Enemies.end())
 	{
-		it->update(dt);
+		//it->update(dt);
 		if (it->getDamage() >= it->getHealth())
 		{
 			//check if any missiles are targeting it and  mark their target as NULL for re-targeting
-			std::cout << it->getHealth();
 			PROJECTILES.removeTarget(&*it);
 			//give player score
 			PLAYER.giveScore(it->getScore());
@@ -69,11 +68,11 @@ void EnemyManager::update(const float dt)
 			else if (pickupChance < GET_HEALTH_CHANCE + GET_INVULNERABLE_CHANCE + GET_MISSILES_CHANCE)
 				PICKUPS.add(Pickup(it->getPosition(), PU_MISSILE));
 			//then delete
-			Enemies.erase(it++);
+			it = Enemies.erase(it);
 		}
 		else
 		{
-			it++;
+			++it;
 		}
 	}
 }

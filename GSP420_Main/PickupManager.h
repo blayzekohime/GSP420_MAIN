@@ -19,7 +19,7 @@ enum PICKUP_TYPE { PU_HEALTH, PU_INVULNERABLE, PU_MISSILE, PU_MINE };
 class Pickup : public GSP420::ABC
 {
 public:
-	Pickup(D3DXVECTOR3 pos, PICKUP_TYPE t) : ABC(pos, OT_PICKUP), taken(false) {}
+	Pickup(D3DXVECTOR3 pos, PICKUP_TYPE t) : ABC(pos, OT_PICKUP), taken(false), Type(t) {}
 	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}

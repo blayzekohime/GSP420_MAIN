@@ -16,7 +16,7 @@ void AsteroidManager::update(const float dt)
 				SmallAsteroids.push_front(SmallAsteroid(it1->getPosition()));
 			}
 			//remove the large one
-			LargeAsteroids.erase(it1++);
+			it1 = LargeAsteroids.erase(it1);
 			//score
 			PLAYER.giveScore(ASTEROID_LARGE_SCORE);
 		}
@@ -31,13 +31,13 @@ void AsteroidManager::update(const float dt)
 		if (!it2->isEnabled())
 		{
 			//remove
-			SmallAsteroids.erase(it2++);
+			it2 = SmallAsteroids.erase(it2);
 			//score
 			PLAYER.giveScore(ASTEROID_SMALL_SCORE);
 		}
 		else
 		{
-			it2++;
+			++it2;
 		}
 	}
 }
