@@ -5,32 +5,6 @@
 #include "Logger.h"
 
 
-void App::Run()
-{
-	//initialize timing
-	__int64 cntsPerSec = 0;
-	QueryPerformanceFrequency((LARGE_INTEGER*)& cntsPerSec);
-	float secsPerCnt = 1.f / (float)cntsPerSec;
-	__int64 prevTimeStamp = 0;
-	QueryPerformanceCounter((LARGE_INTEGER*)& prevTimeStamp);
-	//loop until it's time to quit
-	init();
-	while (!QuitNow)
-	{
-		if (!IsDeviceLost())
-		{
-			__int64 currTimeStamp = 0;
-			QueryPerformanceCounter((LARGE_INTEGER*)&currTimeStamp);
-			float dt = (currTimeStamp - prevTimeStamp)*secsPerCnt;
-
-			update(dt);
-			render();
-			//current time stamp becomes the previous time stamp for the next iteration.
-			prevTimeStamp = currTimeStamp;
-		}
-	}
-	shutdown();
-}
 
 bool App::IsDeviceLost()
 {

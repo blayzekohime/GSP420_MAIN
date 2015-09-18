@@ -20,6 +20,10 @@ void AsteroidManager::update(const float dt)
 			//score
 			PLAYER.giveScore(ASTEROID_LARGE_SCORE);
 		}
+		else
+		{
+			++it1;
+		}
 	}
 	std::list<SmallAsteroid>::iterator it2 = SmallAsteroids.begin();
 	while (it2 != SmallAsteroids.end())
@@ -30,6 +34,10 @@ void AsteroidManager::update(const float dt)
 			SmallAsteroids.erase(it2++);
 			//score
 			PLAYER.giveScore(ASTEROID_SMALL_SCORE);
+		}
+		else
+		{
+			it2++;
 		}
 	}
 }

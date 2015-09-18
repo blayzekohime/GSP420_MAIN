@@ -38,6 +38,7 @@ class Game : public App
 	friend class PlayState;
 	friend class ExitState;
 public:
+	void Run();
 	static Game* Instance();
 	inline bool GetPaused() { return paused; }
 	void Delete();

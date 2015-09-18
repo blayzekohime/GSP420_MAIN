@@ -13,7 +13,32 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 	return 1;
 }
 
+void Game::Run()
+{
+	//initialize timing
+	__int64 cntsPerSec = 0;
+	QueryPerformanceFrequency((LARGE_INTEGER*)& cntsPerSec);
+	float secsPerCnt = 1.f / (float)cntsPerSec;
+	__int64 prevTimeStamp = 0;
+	QueryPerformanceCounter((LARGE_INTEGER*)& prevTimeStamp);
+	//loop until it's time to quit
+	init();
+	while (!QuitNow)
+	{
+		if (!IsDeviceLost())
+		{
+			__int64 currTimeStamp = 0;
+			QueryPerformanceCounter((LARGE_INTEGER*)&currTimeStamp);
+			float dt = (currTimeStamp - prevTimeStamp)*secsPerCnt;
 
+			update(dt);
+			render();
+			//current time stamp becomes the previous time stamp for the next iteration.
+			prevTimeStamp = currTimeStamp;
+		}
+	}
+	shutdown();
+}
 
 //global initialization to facilitate singleton design pattern
 Game* Game::Singleton = NULL;
@@ -37,6 +62,7 @@ void Game::Delete()
 
 void Game::init()
 {
+	App::init();
 	States[STATE_INIT] = InitState();
 	States[STATE_MENU] = MenuState();
 	States[STATE_CREDIT] = CreditsState();
@@ -45,6 +71,8 @@ void Game::init()
 	//will always start with the Init and then Menu states
 	States[STATE_INIT].init();
 	States[STATE_MENU].init();
+	State = STATE_INIT;
+	QuitNow = false;
 }
 
 void Game::onLostDevice()

@@ -44,6 +44,7 @@ public:
 	void update(const float);
 	inline void clear() { Pickups.clear(); }
 private:
+	inline std::list<Pickup>& getPickups() { return Pickups; }
 	std::list<Pickup> Pickups;
 };
 

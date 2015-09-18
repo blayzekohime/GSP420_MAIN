@@ -48,5 +48,6 @@ public:
 	inline void clear() { Projectiles.clear(); }
 	void removeTarget(Enemy*);//if any missiles are targeting that enemy, set their targets to NULL instead
 private:
+	inline std::list<GSP420::ABC>& getProjectiles() { return Projectiles; }
 	std::list<GSP420::ABC> Projectiles;
 };

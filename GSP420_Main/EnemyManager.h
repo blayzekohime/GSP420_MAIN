@@ -42,5 +42,6 @@ public:
 	inline void clear() { Enemies.clear(); }
 private:
 	std::list<Enemy> Enemies;
+	inline std::list<Enemy>& getEnemies() { return Enemies; }
 };
 

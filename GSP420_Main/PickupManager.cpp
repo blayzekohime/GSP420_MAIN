@@ -42,6 +42,11 @@ void PickupManager::update(const float dt)
 		{
 			Pickups.erase(it++);
 		}
+		else
+		{
+			it++;
+		}
 	}
+
 }
 

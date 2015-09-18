@@ -71,6 +71,10 @@ void EnemyManager::update(const float dt)
 			//then delete
 			Enemies.erase(it++);
 		}
+		else
+		{
+			it++;
+		}
 	}
 }
 

@@ -9,6 +9,8 @@ void ProjectileManager::update(const float dt)
 	{
 		if (!it->isEnabled())
 			Projectiles.erase(it++);
+		else
+			++it;
 	}
 }
 
@@ -24,3 +26,4 @@ void ProjectileManager::removeTarget(Enemy* targ)
 		}
 	}
 }
+

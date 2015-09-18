@@ -10,12 +10,12 @@
 class App
 {
 public:
-	void Run();
+	
 protected:
 	App() {}
 	virtual ~App() {}
 	//framework methods for Game class to use
-	virtual void init() {}//used upon game startup
+	virtual void init() { QuitNow = false; }//used upon game startup
 	virtual void onLostDevice() {}//used when screen changes size or other event causes device to be lost
 	virtual void onResetDevice() {}//used after onLostDevice to reaquire needed elements
 	virtual void update(const float) {}//update the scene every frame, anything that is not rendering goes here

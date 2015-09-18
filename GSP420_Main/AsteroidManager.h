@@ -37,6 +37,8 @@ public:
 	void shutdown() {}
 	void clear();
 private:
+	inline std::list<LargeAsteroid>& getLargeAsteroids() { return LargeAsteroids; }
+	inline std::list<SmallAsteroid>& getSmallAsteroids() { return SmallAsteroids; }
 	std::list<LargeAsteroid> LargeAsteroids;
 	std::list<SmallAsteroid> SmallAsteroids;
 };
