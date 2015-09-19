@@ -1,12 +1,5 @@
 #pragma once
 
-#include "DirectInput.h"
-#include "Logger.h"
-
-
-	//exclude rarely used things from windows headers
-#define WIN32_LEAN_AND_MEAN	
-
 class App
 {
 public:

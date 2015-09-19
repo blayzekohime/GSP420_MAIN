@@ -10,13 +10,20 @@ const static int ENEMY_3_SCORE = 50;
 const static int ENEMY_BOSS_SCORE = 250;
 const static int ASTEROID_SMALL_SCORE = 20;
 const static int ASTEROID_LARGE_SCORE = 20;
+const static float BULLET_COOL_DOWN = .5f;
+const static D3DXVECTOR3 BULLET_START_DIRECTION = D3DXVECTOR3(0.f, -1.f, 0.f);
+const static float MISSILE_COOL_DOWN = 1.f;
+const static float PLAYER_SPEED = 30.f;
+
 
 const static float HURT_INVULNERABILITY = 1.f;//how long player is invulnerable after being harmed
 
 class Player : public GSP420::ABC
 {
 public:
-	Player() : ABC(), missileAmmo(0), maxHealth(25), invulnerable(0.f) {}
+	Player() : ABC(), missileAmmo(0), maxHealth(25), invulnerable(0.f), score(0), 
+		lastBullet(0.f), lastMissile(0.f)
+		{ nHealth = 25; }
 	void fireBullet();
 	void fireMissile();
 	void heal(int);
@@ -25,15 +32,18 @@ public:
 	void endGame();
 	void update(const float);
 	bool init(const int modelId, const int textureId) { return true; }
-	void shutdown() {}
+	void shutdown();
 	inline int getMissileAmmo() { return missileAmmo; }
 	inline int getMaxHealth() { return maxHealth; }
 	inline void giveScore(int s) { score += s; }
 	inline void makeInvulnerable(float secs) { invulnerable = secs; }
 	inline void giveMissileAmmo(int ammo) { missileAmmo += ammo; }
+	inline int getScore() { return score; }
 private:
 	int missileAmmo;
 	int maxHealth;
 	float invulnerable;//seconds of invulnerability left
+	float lastBullet;//if <= 0, player can fire a bullet
+	float lastMissile;//if <=0, player can fire a missile
 	int score;
 };

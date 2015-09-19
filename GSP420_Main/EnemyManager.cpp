@@ -1,6 +1,7 @@
 #include "EnemyManager.h"
 
 #include "Game.h"
+#include "Logger.h"
 
 Enemy::Enemy(D3DXVECTOR3 pos, ObjType t) : ABC(pos, t), damage(0)
 {
@@ -22,6 +23,8 @@ Enemy::Enemy(D3DXVECTOR3 pos, ObjType t) : ABC(pos, t), damage(0)
 		nHealth = ENEMY_BOSS_HEALTH;
 		score = ENEMY_BOSS_SCORE;
 		break;
+	default:
+		LOGGER->Write(L"Enemy:Enemy: Invalid type of enemy!");
 	}
 }
 
@@ -34,7 +37,7 @@ void Enemy::fireBullet(D3DXVECTOR3 vel)
 void Enemy::fireMissile(D3DXVECTOR3 vel)//or auto-target the one existing player?
 {
 	//create missile with position and target, velocity will be determined by target
-	PROJECTILES.addMissile(Missile(position, vel, OT_ENEMY_MISSILE));
+	PROJECTILES.addMissile(Missile(position, OT_ENEMY_MISSILE));
 }
 
 void Enemy::dropMine()

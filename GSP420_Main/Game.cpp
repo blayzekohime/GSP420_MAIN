@@ -3,11 +3,14 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
+#include "Graphics/GFX.h"
 #include "Logger.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 {
 	srand((unsigned)time(NULL));
+	if (!GFXCore::D3DCore::get()->initGfxCore(hInstance, L"Space Game"))
+		LOGGER->Write(L"WinMain: Could not initialized graphics core", true);
 	Game::Instance()->Run();
 	Game::Instance()->Delete();
 	return 1;
@@ -73,6 +76,7 @@ void Game::init()
 	States[STATE_MENU].init();
 	State = STATE_INIT;
 	QuitNow = false;
+
 }
 
 void Game::onLostDevice()
@@ -105,8 +109,11 @@ void Game::shutdown()
 
 void Game::changeState(GAMESTATE newstate)
 {
-	States[State].shutdown();
-	State = newstate;
-	States[State].init();
-	paused = false;
+	if(newstate != State)
+	{
+		States[State].shutdown();
+		State = newstate;
+		States[State].init();
+		paused = false;
+	}
 }

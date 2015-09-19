@@ -19,6 +19,7 @@
 #include <list>
 //include other cores
 #include "AI.h"
+#include "Audio.h"
 #include "Physics.h"
 #include "UI.h"
 
@@ -48,6 +49,7 @@ public:
 	PickupManager pickups;
 	ProjectileManager projectiles;
 	Player player;
+	inline GAMESTATE getState() { return State; }
 protected:
 	//the one instance of the object
 	static Game* Singleton;
@@ -71,6 +73,7 @@ private:
 	AI gameAI;
 	Physics gamePhysics;
 	UI gameUI;
+	Audio gameAudio;
 	//is game play paused
 	bool paused;
 };

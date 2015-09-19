@@ -10,6 +10,9 @@ static const int MISSILE_DAMAGE = 2;
 static const int COLLISION_DAMAGE = 1;
 static const int MISSILE_RADIUS = 50;
 
+const static float BULLET_SPEED = 50.f;
+const static float MISSILE_SPEED = 40.f;
+
 class Bullet : public GSP420::ABC
 {
 public:
@@ -24,8 +27,9 @@ protected:
 class Missile : public GSP420::ABC
 {
 public:
-	Missile(const D3DXVECTOR3 pos, const D3DXVECTOR3 vel, const ObjType t, Enemy* targ = NULL) :
-		ABC(pos, vel, t), target(targ)
+	//initial velocity is 0 because that will be set after it's target is set
+	Missile(const D3DXVECTOR3 pos, const ObjType t, Enemy* targ = NULL) :
+		ABC(pos, D3DXVECTOR3(0.f, 0.f, 0.f), t), target(targ)
 	{}
 	void update(const float) {}
 	bool init(const int modelId, const int textureId) { return true; }

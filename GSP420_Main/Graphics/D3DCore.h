@@ -1,6 +1,4 @@
 #pragma once
-//just a placeholder for now
-
 
 #include "D3DUtils.h"
 
@@ -13,19 +11,19 @@ namespace GFXCore
 	public:
 		// functionality	///////////////////////////////////////////////////
 		bool initGfxCore(const HINSTANCE hInst, const wchar_t* wndCaption,
-			const int width = 1024, const int height = 768,
-			const D3DDEVTYPE requestedDevtype = D3DDEVTYPE_HAL,
-			const DWORD requestedVP = D3DCREATE_HARDWARE_VERTEXPROCESSING) { return true; }
-		void shutdown() {}
-		void updateScene(const float dt) {}
-		void drawScene() {}
-		void onLostDevice() {}
-		void onResetDevice() {}
-		bool checkDeviceCaps() { return true; }
-		bool isDeviceLost() { return false; }
-		void setFullScreenMode(bool enable) {}
-		//	LRESULT msgProc(UINT msg, WPARAM wParam, LPARAM lParam);
-		LRESULT CALLBACK msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {}
+								const int width = 1024, const int height = 768, 
+								const D3DDEVTYPE requestedDevtype = D3DDEVTYPE_HAL,
+								const DWORD requestedVP = D3DCREATE_HARDWARE_VERTEXPROCESSING);
+		void shutdown();
+		void updateScene(const float dt);
+		void drawScene();
+		void onLostDevice();
+		void onResetDevice();
+		bool checkDeviceCaps();
+		bool isDeviceLost();
+		void setFullScreenMode(bool enable);
+	//	LRESULT msgProc(UINT msg, WPARAM wParam, LPARAM lParam);
+		LRESULT CALLBACK msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 		// accessors ////////////////////////////////////////////////////////
 		inline HINSTANCE	getAppInstance() const;
@@ -55,11 +53,11 @@ namespace GFXCore
 		HWND				hHwnd;
 		HINSTANCE		hInstance;
 
-		bool initMainWnd(const HINSTANCE hInst, const wchar_t* wndCaption, const int width, const int height) { return true; }
-		bool initDirect3D(const D3DDEVTYPE requestedDevtype, const DWORD requestedVP) { return true; }
+		bool initMainWnd(const HINSTANCE hInst, const wchar_t* wndCaption, const int width, const int height);
+		bool initDirect3D(const D3DDEVTYPE requestedDevtype, const DWORD requestedVP);
 
-		D3DCore() {}
-		virtual ~D3DCore() {}
+		D3DCore();
+		virtual ~D3DCore();
 
 		// HACK: for now
 	public:
@@ -72,13 +70,13 @@ namespace GFXCore
 	};
 
 	// inline function definitions //////////////////////////////////////////
-	HINSTANCE D3DCore::getAppInstance() const { return get()->hInstance; }
+	HINSTANCE D3DCore::getAppInstance() const	{ return get()->hInstance; }
 	HWND D3DCore::getHWND() const { return get()->hHwnd; }
 	IDirect3DDevice9* D3DCore::getDevice() const { return get()->pD3DDevice; }
 	wchar_t D3DCore::getWinCaption() const { return get()->strMainWndCaption[WND_CAPTION_LEN]; }
 	int D3DCore::getWndHeight() const { return get()->nHeight; }
-	int D3DCore::getWndWidth() const { return get()->nWidth; }
-	D3DPRESENT_PARAMETERS& D3DCore::getPresentParams() { return get()->presentParams; }
+	int D3DCore::getWndWidth() const  { return get()->nWidth; }
+	D3DPRESENT_PARAMETERS& D3DCore::getPresentParams()  { return get()->presentParams; }
 
 	void D3DCore::beginScene(const D3DCOLOR clearColor) {
 		HR(pD3DDevice->Clear(0, NULL, D3DCLEAR_STENCIL | D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, clearColor, 1.0f, 0));
@@ -101,9 +99,4 @@ namespace GFXCore
 			pInstance = NULL;
 		}
 	}
-
-	D3DCore*	D3DCore::pInstance = NULL;
-	IDirect3D9*	D3DCore::pD3DObject = NULL;
-	IDirect3DDevice9*	D3DCore::pD3DDevice = NULL;
-
 }
