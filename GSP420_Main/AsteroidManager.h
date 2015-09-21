@@ -1,3 +1,6 @@
+/* Asteroid Manager, SmallAsteroid, and LargeAsteroid created by Brent Spector and edited by 
+Darrell Smith*/
+
 #pragma once
 
 

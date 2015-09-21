@@ -1,3 +1,4 @@
+//PickupManager and Pickup classes created by Brent Spector and edited by Darrell Smith
 #include "PickupManager.h"
 
 #include "Game.h"

@@ -1,3 +1,4 @@
+//Player class created by Darrell Smith and edited by Brent Spector
 #include "Player.h"
 
 #include "Game.h"

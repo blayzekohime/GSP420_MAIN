@@ -1,3 +1,5 @@
+/* ABC class created by Sam Rivera and further edited by Darrell Smith */
+
 #pragma once
 
 //d3d includes and libraries

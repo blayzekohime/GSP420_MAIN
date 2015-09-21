@@ -1,3 +1,5 @@
+//Game class created by Darrell Smith and edited by Brent Spector
+
 #include "Game.h"
 
 #include <stdlib.h>     /* srand, rand */

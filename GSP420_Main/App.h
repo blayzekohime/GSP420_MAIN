@@ -1,3 +1,5 @@
+/* App class created by Darrell Smith and edited by Brent Spector*/
+
 #pragma once
 
 class App

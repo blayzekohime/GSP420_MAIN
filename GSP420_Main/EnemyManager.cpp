@@ -34,6 +34,8 @@ void Enemy::fireBullet(D3DXVECTOR3 vel)
 	PROJECTILES.addBullet(Bullet(position, vel, OT_ENEMY_BULLET));
 }
 
+//Created by Darrell Smith and Brent Spector
+
 void Enemy::fireMissile(D3DXVECTOR3 vel)//or auto-target the one existing player?
 {
 	//create missile with position and target, velocity will be determined by target

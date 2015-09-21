@@ -1,3 +1,4 @@
+/* Logger class created by Darrell Smith, taken from a previous class project "Dart" */
 #define _CRT_SECURE_NO_WARNINGS
 #include <time.h>
 #include <iostream>

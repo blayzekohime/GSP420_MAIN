@@ -1,3 +1,4 @@
+//Projectile Manager, Bullet, and Missile classes created by Darrell Smith and Brent Spector
 #include "ProjectileManager.h"
 
 #include "Game.h"

@@ -1,6 +1,5 @@
+//Created by Darrell Smith and Brent Spector
 #pragma once
-
-
 
 #include "ABC.h"
 using namespace GSP420;

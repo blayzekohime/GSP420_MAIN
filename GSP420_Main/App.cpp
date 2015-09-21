@@ -1,3 +1,4 @@
+/* App class created by Darrell Smith and edited by Brent Spector*/
 #include "App.h"
 
 #include <Windows.h>

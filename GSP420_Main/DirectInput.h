@@ -1,3 +1,5 @@
+//Created by Darrell Smith, taken from his Applied Development II "Dart"
+
 // Wraps initialization of immediate mode Direct Input, and provides 
 // information for querying the state of the keyboard and mouse.
 #pragma once

@@ -1,3 +1,4 @@
+//GameState classes created by Darrell Smith and edited by Brent Spector
 #include "GameState.h"
 
 //some things seem to be occurring the same in every state, so some of this may be moved

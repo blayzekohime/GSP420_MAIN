@@ -1,3 +1,4 @@
+//Projectile Manager, Bullet, and Missile classes created by Darrell Smith and Brent Spector
 #pragma once
 
 #include <list>
