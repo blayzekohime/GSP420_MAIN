@@ -11,7 +11,7 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 {
 	srand((unsigned)time(NULL));
-	if (!GFXCore::D3DCore::get()->initGfxCore(hInstance, L"Space Game"))
+	if (!GFXCore::D3DCore::get()->initGfx(hInstance, L"Space Game"))
 		LOGGER->Write(L"WinMain: Could not initialized graphics core", true);
 	Game::Instance()->Run();
 	Game::Instance()->Delete();
@@ -30,6 +30,15 @@ void Game::Run()
 	init();
 	while (!QuitNow)
 	{
+		//keep windows busy
+		MSG msg;
+		if(PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		//check if device is lost, run code if it isn't, otherwise IsDeviceLost() will
+		//reset things
 		if (!IsDeviceLost())
 		{
 			__int64 currTimeStamp = 0;
