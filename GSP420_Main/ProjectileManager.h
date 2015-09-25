@@ -44,6 +44,7 @@ private:
 
 class ProjectileManager
 {
+	friend class AI;
 	friend class D3DCore;
 	friend class Physics;
 public:

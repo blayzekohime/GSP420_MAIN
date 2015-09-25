@@ -3,7 +3,8 @@
 #include "Game.h"
 #include "Logger.h"
 
-Enemy::Enemy(D3DXVECTOR3 pos, ObjType t) : ABC(pos, t), damage(0)
+Enemy::Enemy(D3DXVECTOR3 pos, ObjType t) : ABC(pos, t), damage(0),
+	bulletFireRate(-1.f), missileFireRate(-1.f), mineFireRate(-1.f)
 {
 	switch (t)
 	{

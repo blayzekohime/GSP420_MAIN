@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AI.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AsteroidManager.cpp" />
     <ClCompile Include="DirectInput.cpp" />

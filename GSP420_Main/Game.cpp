@@ -6,12 +6,13 @@
 #include <time.h>       /* time */
 
 #include "Graphics/GFX.h"
+#include "DirectInput.h"
 #include "Logger.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 {
 	srand((unsigned)time(NULL));
-	if (!GFXCore::D3DCore::get()->initGfx(hInstance, L"Space Game"))
+	if (!GFXCore::D3DCore::get()->initGfxCore(hInstance, L"Space Game"))
 		LOGGER->Write(L"WinMain: Could not initialized graphics core", true);
 	Game::Instance()->Run();
 	Game::Instance()->Delete();
@@ -20,6 +21,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 
 void Game::Run()
 {
+	
 	//initialize timing
 	__int64 cntsPerSec = 0;
 	QueryPerformanceFrequency((LARGE_INTEGER*)& cntsPerSec);
@@ -44,7 +46,6 @@ void Game::Run()
 			__int64 currTimeStamp = 0;
 			QueryPerformanceCounter((LARGE_INTEGER*)&currTimeStamp);
 			float dt = (currTimeStamp - prevTimeStamp)*secsPerCnt;
-
 			update(dt);
 			render();
 			//current time stamp becomes the previous time stamp for the next iteration.
@@ -85,7 +86,7 @@ void Game::init()
 	//will always start with the Init and then Menu states
 	States[STATE_INIT].init();
 	States[STATE_MENU].init();
-	State = STATE_INIT;
+	State = STATE_MENU;
 	QuitNow = false;
 
 }

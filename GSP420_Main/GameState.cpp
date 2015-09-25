@@ -30,6 +30,7 @@ void MenuState::init()
 void MenuState::update(const float dt)
 {
 	GAMECLASS->gameAudio.update(dt);
+	INPUT->Poll();
 	GAMECLASS->gameUI.update(dt, STATE_MENU);
 	GAMECLASS->changeState(GAMECLASS->gameUI.checkStateChanges());
 }
@@ -63,6 +64,7 @@ void CreditsState::init()
 
 void CreditsState::update(const float dt)
 {
+	INPUT->Poll();
 	GAMECLASS->gameAudio.update(dt);
 	GAMECLASS->gameUI.update(dt, STATE_CREDIT);
 	GAMECLASS->changeState(GAMECLASS->gameUI.checkStateChanges());
@@ -103,6 +105,7 @@ void PlayState::init()
 
 void PlayState::update(const float dt)
 {
+	INPUT->Poll();
 	static float pausecooldown = 0.f;
 	if(pausecooldown > 0.f)
 		pausecooldown -= dt;

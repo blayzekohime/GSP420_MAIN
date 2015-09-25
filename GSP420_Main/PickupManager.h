@@ -38,6 +38,7 @@ private:
 
 class PickupManager
 {
+	friend class AI;
 	friend class D3DCore;
 	friend class Physics;
 public:

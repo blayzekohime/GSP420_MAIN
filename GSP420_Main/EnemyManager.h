@@ -24,10 +24,19 @@ public:
 	inline void takeDamage(int d) { damage += d; }
 	inline int getDamage() { return damage; }
 	inline int getScore() { return score; }
+	inline float getBulletFireRate() { return bulletFireRate; }
+	inline float getMissileFireRate() { return missileFireRate; }
+	inline float getMineFireRate() { return mineFireRate; }
+	inline void setBulletFireRate(float r) { bulletFireRate = r; }
+	inline void setMissileFireRate(float r) { missileFireRate = r; }
+	inline void setMineFireRate(float r) { mineFireRate = r; }
 protected:
 	//score player gets for the enemy
 	int score;
 	int damage;//damage taken so far. If this exceeds their health, they are destroyed
+	//fire rates for bullets, missiles, and mines, to be set and used by AI
+	//set the ones not being used to -1.0f
+	float bulletFireRate, missileFireRate, mineFireRate;
 };
 
 class EnemyManager
