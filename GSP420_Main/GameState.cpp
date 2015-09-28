@@ -37,18 +37,18 @@ void MenuState::update(const float dt)
 
 void MenuState::render()
 {
-	GFXCore::D3DCore::get()->drawScene();
+	GFX->drawScene();
 }
 
 void MenuState::onLostDevice()
 {
-	GFXCore::D3DCore::get()->onLostDevice();
+	GFX->onLostDevice();
 	GAMECLASS->gameAudio.onLostDevice();
 }
 
 void MenuState::onResetDevice()
 {
-	GFXCore::D3DCore::get()->onResetDevice();
+	GFX->onResetDevice();
 	GAMECLASS->gameAudio.onResetDevice();
 }
 
@@ -72,18 +72,18 @@ void CreditsState::update(const float dt)
 
 void CreditsState::render()
 {
-	GFXCore::D3DCore::get()->drawScene();
+	GFX->drawScene();
 }
 
 void CreditsState::onLostDevice()
 {
-	GFXCore::D3DCore::get()->onLostDevice();
+	GFX->onLostDevice();
 	GAMECLASS->gameAudio.onLostDevice();
 }
 
 void CreditsState::onResetDevice()
 {
-	GFXCore::D3DCore::get()->onResetDevice();
+	GFX->onResetDevice();
 	GAMECLASS->gameAudio.onResetDevice();
 }
 
@@ -164,18 +164,18 @@ void PlayState::update(const float dt)
 
 void PlayState::render()
 {
-	GFXCore::D3DCore::get()->drawScene();
+	GFX->drawScene();
 }
 
 void PlayState::onLostDevice()
 {
-	GFXCore::D3DCore::get()->onLostDevice();
+	GFX->onLostDevice();
 	GAMECLASS->gameAudio.onLostDevice();
 }
 
 void PlayState::onResetDevice()
 {
-	GFXCore::D3DCore::get()->onResetDevice();
+	GFX->onResetDevice();
 	GAMECLASS->gameAudio.onResetDevice();
 }
 
@@ -200,7 +200,7 @@ void ExitState::init()
 	//unload main graphics/UI/audio resources and then quit
 	GAMECLASS->gameUI.shutdown();
 	GAMECLASS->gameAudio.shutdown();
-	GFXCore::D3DCore::get()->shutdown();
+	GFX->shutdown();
 }
 
 

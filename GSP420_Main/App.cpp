@@ -11,7 +11,7 @@
 bool App::IsDeviceLost()
 {
 	// Get the state of the graphics device.
-	if (GFXCore::D3DCore::get()->isDeviceLost())
+	if (GFX->isDeviceLost())
 	{
 		onLostDevice();
 		onResetDevice();

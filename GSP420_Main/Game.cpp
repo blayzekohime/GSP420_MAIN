@@ -12,7 +12,7 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 {
 	srand((unsigned)time(NULL));
-	if (!GFXCore::D3DCore::get()->initGfxCore(hInstance, L"Space Game"))
+	if (!GFX->initGfxCore(hInstance, L"Space Game"))
 		LOGGER->Write(L"WinMain: Could not initialized graphics core", true);
 	Game::Instance()->Run();
 	Game::Instance()->Delete();
