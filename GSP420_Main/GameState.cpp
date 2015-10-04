@@ -4,7 +4,7 @@
 //some things seem to be occurring the same in every state, so some of this may be moved
 //back to the main methods in Game
 
-#include "Graphics/GFX.h"
+#include "GFX.h"
 #include "DirectInput.h"
 #include "Logger.h"
 #include "Game.h"

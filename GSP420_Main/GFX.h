@@ -14,11 +14,11 @@
 #include "Camera.h"
 #include "Text.h"
 //#include "Sprites.h"
-#include "../ABC.h"
+#include "ABC.h"
 //#include "Shaders.h"
 //#include "Vertex.h"
 // TODO: remove later
-#include "../DirectInput.h"
+#include "DirectInput.h"
 // TODO: Change to proper directory once integration begins
 //#pragma comment (lib, "../Debug/D3D9GraphicsD.lib")
 

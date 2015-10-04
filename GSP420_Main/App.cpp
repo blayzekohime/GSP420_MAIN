@@ -4,7 +4,7 @@
 #include <Windows.h>
 
 #include "Logger.h"
-#include "Graphics/GFX.h"
+#include "GFX.h"
 
 
 

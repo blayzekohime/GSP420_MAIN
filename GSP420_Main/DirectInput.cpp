@@ -1,7 +1,7 @@
 //Created by Darrell Smith, taken from his Applied Development II "Dart"
 #include "DirectInput.h"
 
-#include "Graphics/GFX.h"//for AppInst and MainWnd
+#include "GFX.h"//for AppInst and MainWnd
 #include "Logger.h"
 
 DirectInput* DirectInput::Singleton = NULL;

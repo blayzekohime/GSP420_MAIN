@@ -5,7 +5,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
-#include "Graphics/GFX.h"
+#include "GFX.h"
 #include "DirectInput.h"
 #include "Logger.h"
 
