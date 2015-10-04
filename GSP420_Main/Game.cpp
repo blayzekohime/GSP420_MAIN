@@ -12,7 +12,7 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, int)
 {
 	srand((unsigned)time(NULL));
-	if (!GFX->initGfxCore(hInstance, L"Space Game"))
+	if (!GFX->initGFX(hInstance, L"Space Game"))
 		LOGGER->Write(L"WinMain: Could not initialized graphics core", true);
 	Game::Instance()->Run();
 	Game::Instance()->Delete();
@@ -38,6 +38,9 @@ void Game::Run()
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
+
+			if(msg.message == WM_CLOSE || msg.message == WM_QUIT)
+				QuitNow = true;
 		}
 		//check if device is lost, run code if it isn't, otherwise IsDeviceLost() will
 		//reset things

@@ -19,7 +19,7 @@ class Bullet : public GSP420::ABC
 public:
 	Bullet(const D3DXVECTOR3 pos, const D3DXVECTOR3 vel, const ObjType t) : ABC(pos, vel, t) {}
 	void update(const float) {}
-	bool init(const int modelId, const int textureId) { return true; }
+	//bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 	inline bool isPlayers() { return eType == OT_PLAYER_BULLET; }
 protected:
@@ -33,7 +33,7 @@ public:
 		ABC(pos, D3DXVECTOR3(0.f, 0.f, 0.f), t), target(targ)
 	{}
 	void update(const float) {}
-	bool init(const int modelId, const int textureId) { return true; }
+	//bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 	inline void setEnemyTarget(Enemy*e) { target = e; }
 	inline Enemy* getEnemyTarget() { return target; }//returns NULL if it needs re-targeted or if player is target

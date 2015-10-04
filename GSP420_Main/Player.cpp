@@ -80,3 +80,9 @@ void Player::shutdown()
 	nHealth = maxHealth = 25; 
 	invulnerable = lastBullet = lastMissile = 0.f;
 }
+
+void Player::makeInvulnerable(float secs)
+{ 
+	if(secs > invulnerable)
+		invulnerable = secs; 
+}

@@ -37,7 +37,7 @@ void MenuState::update(const float dt)
 
 void MenuState::render()
 {
-	GFX->drawScene();
+	GFX->renderScene();
 }
 
 void MenuState::onLostDevice()
@@ -72,7 +72,7 @@ void CreditsState::update(const float dt)
 
 void CreditsState::render()
 {
-	GFX->drawScene();
+	GFX->renderScene();
 }
 
 void CreditsState::onLostDevice()
@@ -164,7 +164,7 @@ void PlayState::update(const float dt)
 
 void PlayState::render()
 {
-	GFX->drawScene();
+	GFX->renderScene();
 }
 
 void PlayState::onLostDevice()

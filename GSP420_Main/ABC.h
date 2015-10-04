@@ -40,7 +40,9 @@ namespace GSP420
 		ABC(const D3DXVECTOR3 p, const D3DXVECTOR3 v, const int h, const ObjType t) :
 			position(p), velocity(v), nHealth(h), eType(t), bEnabled(true) {}
 
-		virtual bool init(const int modelId, const int textureId) { return true; }
+		virtual bool init(const int modelId, const int textureId) { 
+			nModelId = modelId; nTextureId = textureId;
+			return true; }
 		virtual void update(const float dt) {}
 		virtual void shutdown() {}
 
@@ -57,8 +59,7 @@ namespace GSP420
 		inline void setHealth(const int health) { nHealth = health; }
 		inline void toggleEnabled() { bEnabled = !bEnabled; }
 		inline void setEnabled(const bool enabled) { bEnabled = enabled; }
-		inline void setObjectType(ObjType e) { eType = e; }
-
+		inline void setObjectType(ObjType t) { eType = t; }
 		//ABC(const ABC&);
 		virtual ~ABC() {}
 

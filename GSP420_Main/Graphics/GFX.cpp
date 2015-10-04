@@ -25,7 +25,7 @@ GFXCore::Graphics::Graphics() :
 }
 
 void GFXCore::Graphics::shutdown()
-{
+{/*
 	destroyAllVertexDeclarations();
 	textures.shutdown();
 	models.shutdown();
@@ -33,11 +33,11 @@ void GFXCore::Graphics::shutdown()
 	sprites.shutdow();
 	shaders.shutdown();
 	d3d->shutdown();
-	del();
+	del();*/
 }
 
 bool GFXCore::Graphics::initModules(const int numStartTexs /*= 20*/, const int numStartModels /*= 10*/, const int numStartFonts /*= 5*/, const int numStartSprites /*= 15*/, const int numStartShaders /*= 4*/)
-{
+{/*
 	bool res = true;
 
 	res &= textures.init(numStartTexs);
@@ -48,7 +48,8 @@ bool GFXCore::Graphics::initModules(const int numStartTexs /*= 20*/, const int n
 
 	initAllVertexDeclarations();
 
-	return res;
+	return res;*/
+	return true;
 }
 
 int GFXCore::Graphics::loadFont(const FontData& fontData)
@@ -61,7 +62,7 @@ int GFXCore::Graphics::loadModel(const wchar_t* fileName, const D3DXVECTOR3& ini
 								 const D3DXVECTOR3& initScale /*= D3DXVECTOR3(1.0f, 1.0f, 1.0f)*/, 
 								 DWORD options /*= D3DXMESH_MANAGED*/)
 {
-	return models.loadModel(d3d->getDevice(), fileName, textures, initPos, initRot, initScale, options);
+	return 1;//models.loadModel(d3d->getDevice(), fileName, textures, initPos, initRot, initScale, options);
 }
 
 int GFXCore::Graphics::loadTexture(const wchar_t* fileName)
@@ -76,7 +77,7 @@ bool GFXCore::Graphics::initGFX(const HINSTANCE hInst, const wchar_t* wndCaption
 
 int GFXCore::Graphics::loadSprite(const wchar_t* fileName, const bool centerIsTopLeft, const D3DXVECTOR3& initPos /*= D3DXVECTOR3(0.0f, 0.0f, 0.0f)*/, D3DCOLOR initColor /*= D3DCOLOR_RGBA(255, 255, 255, 255)*/, RECT* clipRect /*= NULL*/)
 {
-	return sprites.loadSprite(d3d->getDevice(), fileName, textures, initPos, centerIsTopLeft, initColor, clipRect);
+	return 1;//sprites.loadSprite(d3d->getDevice(), fileName, textures, initPos, centerIsTopLeft, initColor, clipRect);
 }
 
 void GFXCore::Graphics::updateModel(const int id, const D3DXVECTOR3& position, const bool rotChange /*= false*/, const bool scaleChange /*= false*/, const D3DXVECTOR3& rotation /*= D3DXVECTOR3(0.0f, 0.0f, 0.0f)*/, const D3DXVECTOR3& scaling /*= D3DXVECTOR3(1.0f, 1.0f, 1.0f)*/)
@@ -86,17 +87,17 @@ void GFXCore::Graphics::updateModel(const int id, const D3DXVECTOR3& position, c
 
 void GFXCore::Graphics::updateSprite(const int id, const D3DXVECTOR3& position)
 {
-	sprites.update(id, position);
+	//sprites.update(id, position);
 }
 
 int GFXCore::Graphics::loadShader(const wchar_t* fileName, const char* techName, const char* worldMatName)
 {
-	return shaders.loadShader(d3d->getDevice(), fileName, techName, worldMatName);
+	return 1;//shaders.loadShader(d3d->getDevice(), fileName, techName, worldMatName);
 }
 
 void GFXCore::Graphics::cameraSetLens(const int width, const int height, const float nearZ, const float farZ)
 {
-	camera.setOrthoLens(d3d->getDevice(), width, height, nearZ, farZ);
+	//camera.setOrthoLens(d3d->getDevice(), width, height, nearZ, farZ);
 }
 
 void GFXCore::Graphics::updateCamera(const float dt)
@@ -127,14 +128,14 @@ HWND GFXCore::Graphics::getHWND() const
 void GFXCore::Graphics::onLostDevice()
 {
 	d3d->onLostDevice();
-	sprites.onLostDevice();
+	//sprites.onLostDevice();
 	text.onLostDevice();
 }
 
 void GFXCore::Graphics::onResetDevice()
 {
 	d3d->onResetDevice();
-	sprites.onResetDevice();
+	//sprites.onResetDevice();
 	text.onResetDevice();
 }
 
@@ -201,7 +202,7 @@ void GFXCore::Graphics::addToTextRenderList(const int* idsToRender, const int co
 
 void GFXCore::Graphics::renderScene()
 {
-	d3d->beginScene(D3DCOLOR_XRGB(0, 0, 100));
+	/*d3d->beginScene(D3DCOLOR_XRGB(0, 0, 100));
 
 	for (int i = 0; i < nModelListIndex; ++i) {
 		models.update(modelRenderList[i]->getModelId(),
@@ -224,32 +225,32 @@ void GFXCore::Graphics::renderScene()
 
 	nModelListIndex = 0;
 	nSpriteListIndex = 0;
-	nTextListIndex = 0;
+	nTextListIndex = 0;*/
 }
 
 void GFXCore::Graphics::setTextForFont(const int fontId, const wchar_t* newText)
 {
-	text.setText(fontId, newText);
+	//text.setText(fontId, newText);
 }
 
 int GFXCore::Graphics::getTextureWidth(const int id)
 {
-	return textures.getTextureWidth(id);
+	return 1;//textures.getTextureWidth(id);
 }
 
 int GFXCore::Graphics::getTextureHeight(const int id)
 {
-	return textures.getTextureHeight(id);
+	return 1;//textures.getTextureHeight(id);
 }
 
 int GFXCore::Graphics::getSpriteWidth(const int id)
 {
-	return textures.getTextureWidth(sprites.getSprite(id).nTextureId);
+	return 1;//textures.getTextureWidth(sprites.getSprite(id).nTextureId);
 }
 
 int GFXCore::Graphics::getSpriteHeight(const int id)
 {
-	return textures.getTextureHeight(sprites.getSprite(id).nTextureId);
+	return 1;//textures.getTextureHeight(sprites.getSprite(id).nTextureId);
 
 }
 

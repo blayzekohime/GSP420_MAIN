@@ -22,7 +22,7 @@ class Pickup : public GSP420::ABC
 public:
 	Pickup(D3DXVECTOR3 pos, PICKUP_TYPE t) : ABC(pos, OT_PICKUP), taken(false), Type(t) {}
 	void update(const float) {}
-	bool init(const int modelId, const int textureId) { return true; }
+	//bool init(const int modelId, const int textureId) { return true; }
 	void shutdown() {}
 	void activate();
 	inline void take() { taken = true; }

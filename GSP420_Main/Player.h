@@ -33,12 +33,12 @@ public:
 	void move(D3DXVECTOR3);
 	void endGame();
 	void update(const float);
-	bool init(const int modelId, const int textureId) { return true; }
 	void shutdown();
+
 	inline int getMissileAmmo() { return missileAmmo; }
 	inline int getMaxHealth() { return maxHealth; }
 	inline void giveScore(int s) { score += s; }
-	inline void makeInvulnerable(float secs) { invulnerable = secs; }
+	void makeInvulnerable(float secs);
 	inline void giveMissileAmmo(int ammo) { missileAmmo += ammo; }
 	inline int getScore() { return score; }
 private:
